@@ -1,10 +1,11 @@
 drop database if exists department;
+drop database if exists mydb;
 
-CREATE DATABASE department_test character set 'utf8' collate "utf8_bin";
+CREATE DATABASE company character set 'utf8' collate 'utf8_bin';
 
 show databases;
 
-use department_test;
+use company;
 
 create table employee(
 employee_id Int primary key, 
@@ -73,6 +74,7 @@ alter table employee change job_id job_id int;
 insert into employee 
 (employee_id, first_name, last_name, email,phone_number, salary, job_id, manager_id, department_id, start_time, statue)
 values
+(1, 'Hong', 'CzZu', 'fdsa.zhu@163.com', '458269574', 33000, 1, 1, 2, date('2017-5-20'), 'ONBOARD'),
 (2, 'Jone', 'Cu', 'fdsa.zhu@163.com', '12542568574', 8000, 1, 1, 2, date('2019-10-20'), 'ONBOARD'),
 (3, 'Honet', 'Beef', 'Beef.zhu@163.com', '254254', 15000, 2, 1, 3, date('2018-10-20'), 'ONBOARD'),
 (4, 'Amit', 'Chrry', 'Chrry.zhu@163.com', '654', 9000, 1, 4, 4, date('2017-10-20'), 'OFFLINE'),
@@ -81,10 +83,7 @@ values
 (7, 'Afds', 'Ruje', 'Ruje.zhu@163.com', '687257', 2000, 4, 4, 7, date('2019-10-20'), 'OFFLINE'),
 (8, 'Beeef', 'Bo', 'Bo.zhu@163.com', '2788687257', 8000, 4, 1, 8, date('2019-01-20'), 'ONBOARD'),
 (9, 'Bee', 'Liff', 'Liff.zhu@163.com', '65875285727', 6000, 6, 1, 1, date('2015-10-20'), 'ONBOARD'),
-(10, 'General', 'Zhu', 'hongjie.zhu@163.com', '12548968574', 2000, 7, 9, 1, date('2011-11-20'), 'OFFLINE')
-;
-
-select * from employee;
+(10, 'General', 'Zhu', 'hongjie.zhu@163.com', '12548968574', 2000, 7, 9, 1, date('2011-11-20'), 'OFFLINE');
 
 desc job;
 
@@ -104,17 +103,21 @@ values
 (10, 'CFO', 'A', 40000, 80000),
 (11, 'DMA', 'A', 30000, 50000);
 
-select * from job;
-
 desc location;
 
 insert into location (location_id, location_title, country_number, address) values 
 (1, '中国', 1, 'BeiJing'),
-(2, 'US', 2, 'LOS'),
+(2, 'Armenia', 2, 'LOS'),
 (3, 'UK', 3, 'LONDON'),
 (4, '日本', 4, 'DaBan');
 
 select * from location;
+select * from job;
+select *, concat(first_name, ' ', last_name) as myname from employee where concat(first_name, ' ', last_name) like '%a%';
+select * from department;
+
+select * from world.country;
+
 
 
 
